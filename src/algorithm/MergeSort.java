@@ -15,7 +15,7 @@ public class MergeSort {
 
         int[] array = {8, 9, 1, 7, 2, 3, 5, 4, 2, 0};
 
-        array=selfMergeSort(array);
+        array = selfMergeSort(array);
 
         System.out.println(JSON.toJSONString(array));
 
@@ -52,40 +52,40 @@ public class MergeSort {
     }
 
 
-
-    public static int[] selfMergeSort(int [] nums ){
+    public static int[] selfMergeSort(int[] nums) {
         //递归调用的时候处理
-        if(nums.length<2){
+        if (nums.length < 2) {
             return nums;
         }
-        int mid= nums.length/2;
+        int mid = nums.length / 2;
         //拆分数组
-        int left [] =Arrays.copyOfRange(nums,0,mid);
-        int right [] = Arrays.copyOfRange(nums,mid,nums.length);
+        int left[] = Arrays.copyOfRange(nums, 0, mid);
+        int right[] = Arrays.copyOfRange(nums, mid, nums.length);
         //
-       return selfMerge(selfMergeSort(left),selfMergeSort(right));
+        return selfMerge(selfMergeSort(left), selfMergeSort(right));
     }
 
     /**
      * merge
+     *
      * @param left
      * @param right
      * @return
      */
-    public static int [] selfMerge(int []left ,int [] right){
+    public static int[] selfMerge(int[] left, int[] right) {
         //创建新的集合
-        int [] result = new int [left.length+ right.length];
+        int[] result = new int[left.length + right.length];
         //i 控制左边  j控制右边 index代表最终结果集的坐标
-        for (int index=0, i = 0 ,j=0; index < result.length; index++) {
+        for (int index = 0, i = 0, j = 0; index < result.length; index++) {
 
-            if(i>=left.length){
-                result[index]= right[j++];
-            }else if(j>=right.length){
-                result[index]= left[i++];
-            }else if(left[i]>right[j]){
-                result[index] =right[j++];
-            }else {
-                result[index]=left[i++];
+            if (i >= left.length) {
+                result[index] = right[j++];
+            } else if (j >= right.length) {
+                result[index] = left[i++];
+            } else if (left[i] > right[j]) {
+                result[index] = right[j++];
+            } else {
+                result[index] = left[i++];
             }
         }
         return result;

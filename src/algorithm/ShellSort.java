@@ -26,7 +26,7 @@ public class ShellSort {
      * @param array
      * @return
      */
-    public static int [] ShellSort(int[] array) {
+    public static int[] ShellSort(int[] array) {
         int len = array.length;
         int temp;
         int gap = len / 2; //gap 代表相比的两个数之间的跨度
@@ -58,35 +58,34 @@ public class ShellSort {
     /**
      * 自己理解的shell 排序的思想 先把无序的队列拆开,然后取中间数作为比较的间隔(gap)
      */
-    public static void selfShellSort(int []nums){
+    public static void selfShellSort(int[] nums) {
 
         int length = nums.length;
 
-        int temp ,gap =length/2;
+        int temp, gap = length / 2;
 
         //当步长大于0的时候
-        while(gap>0){
+        while (gap > 0) {
             //从间隔的位置开始比较
             for (int i = gap; i < length; i++) {
                 //记录当时临时的数字
-                temp=nums[i];
+                temp = nums[i];
                 //要比较的数的下标
-                int preIndex=i-gap;
+                int preIndex = i - gap;
 
                 //gap 间隔比较
-                while(preIndex>=0 && nums[preIndex]>temp){
+                while (preIndex >= 0 && nums[preIndex] > temp) {
                     //交换当前位置
-                    nums[preIndex+gap]=nums[preIndex];
+                    nums[preIndex + gap] = nums[preIndex];
                     //比较下标在按间隔往前挪动  3 4 2  ->3 2 4这个时候2和3还要比
-                    preIndex-=gap;
+                    preIndex -= gap;
                 }
                 //全部比完 然后把当前数放到最前面的那个位置 因为先去preindex-=gap所以加gap
-                nums[preIndex+gap]= temp;
+                nums[preIndex + gap] = temp;
             }
-            gap/=2;
+            gap /= 2;
         }
     }
-
 
 
 }
